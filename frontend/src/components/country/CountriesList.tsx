@@ -23,7 +23,7 @@ function CountriesList(): React.ReactNode {
   return (
     <div>
       {sortedItems && (
-        <ul className="d-flex-row ">
+        <ul className="d-flex-row">
           {sortedItems.map((country: Country) => (
             <CountryItem key={country.id} country={country} />
           ))}

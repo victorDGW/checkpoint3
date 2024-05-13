@@ -8,9 +8,10 @@ export type CountryProps = {
 
 function CountryItem({ country }: CountryProps): React.ReactNode {
   return (
-    <div>
-      <Link href={`/country/${country.code}/`}>
-        {country.emoji} {country.name}
+    <div className="card">
+      <Link className="d-flex-row " href={`/country/${country.code}/`}>
+        <div>{country.name}</div>
+        <span> {country.emoji} </span>
       </Link>
     </div>
   )
