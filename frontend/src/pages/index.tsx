@@ -1,3 +1,10 @@
+import { Layout } from '@/components/Layout'
+import CountryList from '@/components/country/CountriesList'
 export default function Home() {
-  return <h1>Hello, wilde</h1>
+  return (
+    <Layout title="Home">
+      <h1> list of country</h1>
+      <CountryList />
+    </Layout>
+  )
 }
