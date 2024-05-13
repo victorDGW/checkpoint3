@@ -7,8 +7,8 @@ services:
     ports:
       - 4000:4000
     volumes:
-      - ./backend/src:/app/src:Z
-      - ./backend/countries.sqlite:/app/countries.sqlite:Z
+      - ./backend/src:/app/src
+      - ./backend/countries.sqlite:/app/countries.sqlite
 
   frontend:
     environment:
@@ -22,4 +22,4 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./frontend/src:/app/src:Z
+      - ./frontend/src:/app/src

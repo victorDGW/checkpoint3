@@ -1,11 +1,37 @@
+import { mutationCreateCountry } from '@/graphql/mutationCreateCountry'
+import { queryAllCountries } from '@/graphql/queryAllCountries'
+import { AddCountryForm } from '@/types/country'
+import { useMutation } from '@apollo/client'
 import React, { FormEvent, useState } from 'react'
 
 function AddCountry(): React.ReactNode {
   const [name, setName] = useState('')
-  const [emoj, setEmoj] = useState('')
+  const [emoji, setEmoji] = useState('')
   const [code, setCode] = useState('')
+  const data: AddCountryForm = {
+    name,
+    emoji,
+    code,
+  }
+
+  const [doCreate, { loading: loadingCreate }] = useMutation(
+    mutationCreateCountry,
+    {
+      refetchQueries: [queryAllCountries],
+    }
+  )
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+
+    if (name && emoji && code) {
+      const result = await doCreate({
+        variables: {
+          data: data,
+        },
+      })
+    } else {
+      console.error('error')
+    }
   }
 
   return (
@@ -28,8 +54,8 @@ function AddCountry(): React.ReactNode {
           <input
             type="text"
             name="emoj"
-            value={emoj}
-            onChange={(e) => setEmoj(e.target.value)}
+            value={emoji}
+            onChange={(e) => setEmoji(e.target.value)}
           />
         </div>
         <div className="d-flow-column">

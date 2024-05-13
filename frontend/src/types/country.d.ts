@@ -7,3 +7,10 @@ export interface Country {
   emoji: string
   continent?: Continent
 }
+
+export type AddCountryForm = {
+  code: string
+  name: string
+  emoji: string
+  continent?: { id: number } | null
+}

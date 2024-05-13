@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-export const addCountry = gql`
+export const mutationCreateCountry = gql`
   mutation Mutation($data: NewCountryInput!) {
     item: addCountry(data: $data) {
       id
